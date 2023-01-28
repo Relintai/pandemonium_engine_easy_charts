@@ -67,9 +67,9 @@ func _to_string() -> String:
 			string+="%*s" % [last_string_len+1, dataset[row_i][column_i]]
 		string+="\n"
 	string+="\n['{table_name}' : {rows} rows x {columns} columns]\n".format({
-		rows = datamatrix.rows(), 
-		columns = datamatrix.columns(),
-		table_name = table_name})
+		"rows": datamatrix.rows(), 
+		"columns": datamatrix.columns(),
+		"table_name": table_name})
 	return string
 
 # ...............................................................................
@@ -160,10 +160,11 @@ func get_irows(indexes : PoolIntArray) -> Array:
 # dataset["0:5"] ---> Returns an array containing all columns from the 1st to the 4th
 # dataset["label0;label5"] ---> Returns an array containing all row from the one with label == "label0" to the one with label == "label5"
 # dataset["header0:header0"] ---> Returns an array containing all columns from the one with label == "label0" to the one with label == "label5"
-func _get(_property : String):
+func _get(_property : StringName):
+	var propertystr : String = _property
 	# ":" --> Columns 
-	if ":" in _property:
-		var property : PoolStringArray = _property.split(":")
+	if ":" in propertystr:
+		var property : PoolStringArray = propertystr.split(":")
 		if (property[0]).is_valid_integer(): 
 			if property[1] == "*":
 				return get_icolumns(range(property[0] as int, headers.size()-1))
@@ -175,16 +176,16 @@ func _get(_property : String):
 			else:
 				return get_icolumns(range(get_column_index(property[0]), get_column_index(property[1])))    
 	# ";" --> Rows 
-	elif ";" in _property:
-		var property : PoolStringArray = _property.split(";")
+	elif ";" in propertystr:
+		var property : PoolStringArray = propertystr.split(";")
 		if (property[0]).is_valid_integer(): 
 			return get_irows(range(property[0] as int, property[1] as int + 1 ))
 		else: 
 			return get_irows(range(get_row_index(property[0]), get_row_index(property[1])))
-	elif "," in _property:
-		var property : PoolStringArray = _property.split(",")
+	elif "," in propertystr:
+		var property : PoolStringArray = propertystr.split(",")
 	else:
-		if (_property as String).is_valid_integer():
-			return get_icolumn(_property as int)
+		if (propertystr as String).is_valid_integer():
+			return get_icolumn(propertystr as int)
 		else:
-			return get_column(_property)
+			return get_column(propertystr)

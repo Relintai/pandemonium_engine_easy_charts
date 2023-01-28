@@ -159,16 +159,17 @@ func set(position: String, value) -> void:
 	values[t_pos[0]][t_pos[1]] = value
 
 # --------------
-func _get(_property : String):
+func _get(_property : StringName):
+	var propertystr : String = _property
 	# ":" --> Columns 
-	if ":" in _property:
-		var property : PoolStringArray = _property.split(":") 
+	if ":" in propertystr:
+		var property : PoolStringArray = propertystr.split(":") 
 		var from : PoolStringArray = property[0].split(",")
 		var to : PoolStringArray = property[1].split(",")
-	elif "," in _property:
-		var property : PoolStringArray = _property.split(",")
+	elif "," in propertystr:
+		var property : PoolStringArray = propertystr.split(",")
 		if property.size() == 2:
 			return get_row(property[0] as int)[property[1] as int]
 	else:
-		if (_property as String).is_valid_integer():
-			return get_row(_property as int)
+		if propertystr.is_valid_integer():
+			return get_row(propertystr as int)

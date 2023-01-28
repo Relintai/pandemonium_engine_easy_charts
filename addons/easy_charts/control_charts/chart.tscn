@@ -26,3 +26,5 @@ margin_bottom = 14.0
 
 [node name="Tooltip" parent="." instance=ExtResource( 2 )]
 visible = false
+margin_right = 20.0
+margin_bottom = 16.0

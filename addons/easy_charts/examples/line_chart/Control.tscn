@@ -24,12 +24,12 @@ __meta__ = {
 [node name="CheckButton" type="CheckButton" parent="."]
 margin_right = 223.0
 margin_bottom = 40.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 text = "Start Relatime Plotting"
 
 [node name="Label" type="Label" parent="."]

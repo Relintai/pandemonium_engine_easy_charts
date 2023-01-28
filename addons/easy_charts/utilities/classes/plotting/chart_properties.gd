@@ -25,16 +25,16 @@ var interactive: bool = false
 var use_splines: bool = false
 
 var colors: Dictionary = {
-	bounding_box = Color.black,
-	grid = Color.gray,
-	functions = [Color.red, Color.green, Color.blue, Color.black]
+	"bounding_box": Color.black,
+	"grid": Color.gray,
+	"functions": [Color.red, Color.green, Color.blue, Color.black]
 }
 
 var point_radius: float = 3.0
 var line_width: float = 1.0
 var bar_width: float = 10.0
 var shapes: Array = [Point.Shape.CIRCLE, Point.Shape.SQUARE, Point.Shape.TRIANGLE, Point.Shape.CROSS]
-var font: BitmapFont = Label.new().get_font("")
+var font: BitmapFont = Label.new().get_theme_font("")
 
 func get_function_color(function_index: int) -> Color:
 	return colors.functions[function_index] if function_index < colors.functions.size() else Color.black
